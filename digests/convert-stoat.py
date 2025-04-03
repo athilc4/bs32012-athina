@@ -1,5 +1,4 @@
 import sys
-import glob
 import os
 
 def getgaps(pos, ref):
@@ -20,9 +19,10 @@ def splitalignment(filename):
     with open(filename, 'r') as alignment:
         for line in alignment:
             if line.startswith('>'):
-                seqname = line[1:].split()[0].upper()
-                sequences[seqname] = []
-                current_seqname = seqname
+                # Grab first part before any slashes or spaces — like 'ferret' or 'stoat'
+                seqname = line[1:].split()[0].split('/')[0].strip()
+                sequences[seqname.upper()] = []
+                current_seqname = seqname.upper()
             else:
                 sequences[current_seqname].append(line.strip())
     for key in sequences:
@@ -30,9 +30,9 @@ def splitalignment(filename):
     return sequences
 
 def process_restrict(species_name, sequences, newdirect):
-    filename = species_name + '.restrict'
+    filename = species_name.lower() + '.restrict'  # e.g., 'ferret.restrict'
     aligned_seq = sequences[species_name.upper()]
-    output_filename = os.path.join(newdirect, species_name + 'new.restrict')
+    output_filename = os.path.join(newdirect, species_name.lower() + 'new.restrict')
     
     with open(filename, 'r') as fhin, open(output_filename, 'w') as fhout:
         linein = fhin.readline()
@@ -62,12 +62,14 @@ if len(sys.argv) > 1:
     print(f'Processing alignment file: {infile}')
 
 sequences = splitalignment(infile)
+print("Parsed sequences:", list(sequences.keys()))
+
 newdirect = 'gappedrestrict'
 os.makedirs(newdirect, exist_ok=True)
 
-# Process both species
-ferret_output = process_restrict('ferret .1', sequences, newdirect)
-stoat_output = process_restrict('stoat .1', sequences, newdirect)
+# Use simplified keys: 'ferret' and 'stoat'
+ferret_output = process_restrict('ferret', sequences, newdirect)
+stoat_output = process_restrict('stoat', sequences, newdirect)
 
 print(f'Finished processing:\n - {ferret_output}\n - {stoat_output}')
 
