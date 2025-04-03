@@ -41,6 +41,6 @@ with open(os.path.join(gapped_path, 'stoat_unique_sites.txt'), 'w') as f_out:
     for start, enzyme in sorted(stoat_unique):
         f_out.write(f"{start}\t{enzyme}\n")
 
-print("✅ Unique restriction sites saved to:")
+print("Unique restriction sites saved to:")
 print(" - gappedrestrict/ferret_unique_sites.txt")
 print(" - gappedrestrict/stoat_unique_sites.txt")
