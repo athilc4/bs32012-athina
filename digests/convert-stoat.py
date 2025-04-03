@@ -56,7 +56,7 @@ def process_restrict(species_name, sequences, newdirect):
     return output_filename
 
 # ---------- MAIN ----------
-infile = 'ferret_alignment.fa'
+infile = 'ferret-stoat_alignment.fa'
 if len(sys.argv) > 1:
     infile = sys.argv[1]
     print(f'Processing alignment file: {infile}')

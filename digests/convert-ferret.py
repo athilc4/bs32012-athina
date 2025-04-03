@@ -32,7 +32,7 @@ def splitalignment(filename):
     return sequences
 
 # --- Config ---
-infile = 'ferret_alignment.fa'  # Real input FASTA file
+infile = 'ferret-stoat_alignment.fa'  # Real input FASTA file
 if len(sys.argv) > 1:
     infile = sys.argv[1]
     print(f'Processing {infile}')
