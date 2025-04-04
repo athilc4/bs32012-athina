@@ -2,7 +2,8 @@ import os
 
 # Get the current script directory so paths always work
 script_dir = os.path.dirname(__file__)
-gapped_path = os.path.join(script_dir, 'gappedrestrict')
+gapped_path = os.path.join(script_dir, '..', 'restriction_analysis', 'gappedrestrict')
+
 
 def read_restrict_file(filepath):
     sites = set()

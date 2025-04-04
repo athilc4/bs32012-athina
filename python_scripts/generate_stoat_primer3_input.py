@@ -2,10 +2,14 @@ from Bio import SeqIO
 import os
 
 # --- Config ---
-alignment_file = 'restriction_analysis/ferret-stoat_alignment.fa'
+script_dir = os.path.dirname(__file__)
+repo_root = os.path.abspath(os.path.join(script_dir, '..'))
+
+alignment_file = os.path.join(repo_root, 'restriction_analysis', 'ferret-stoat_alignment.fa')
 stoat_id = 'STOAT'  # Parsed from fasta headers, adjust if needed
-restrict_file = 'restriction_analysis/gappedrestrict/stoat_unique_sites.txt'
-output_file = 'restriction_analysis/gappedrestrict/stoat_primer3_input.txt'
+restrict_file = os.path.join(repo_root, 'restriction_analysis', 'gappedrestrict', 'stoat_unique_sites.txt')
+output_file = os.path.join(repo_root, 'primer3', 'stoat_primer3_input.txt')
+
 
 flank = 100  # 100bp on each side
 
