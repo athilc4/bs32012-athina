@@ -23,6 +23,3 @@ Three enzyme/primer combinations were selected based on quality metrics and in s
 - NlaIV, BsrBI, and BaeI
 - All primers yield amplicons between 97–160 bp and target ferret-specific restriction sites
 
----
-
-Athina Lorraine Chatziplis | University of Dundee (Student) | Repo maintained in 2025
